@@ -1,0 +1,53 @@
+@mixin mobile() {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin desktop() {
+  @media (min-width:768px) {
+    @content;
+  }
+}
+
+@mixin desktopLarge() {
+  @media (min-width:992px) {
+    @content;
+  }
+}
+
+@mixin hover {
+  opacity: .7;
+  transition: .4s ease;
+}
+
+@mixin hoverEvent {
+  &:hover {
+    opacity: .7;
+    transition: .4s ease;
+  }
+}
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin centerY {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin square($pixel) {
+  width: $pixel;
+  height: $pixel;
+}
+
+@mixin showLines($n) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $n;
+  -webkit-box-orient: vertical;
+}

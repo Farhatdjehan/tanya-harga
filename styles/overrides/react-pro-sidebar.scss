@@ -1,0 +1,39 @@
+@import "./../variables";
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap");
+
+.pro-sidebar {
+  font-family: "Work Sans", sans-serif;
+  color: $black-primary;
+  box-shadow: $box-shadow;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  z-index: 999 !important;
+  & > .pro-sidebar-inner {
+    background: #fff;
+    & > .pro-sidebar-layout {
+    }
+  }
+
+  .pro-menu {
+    .pro-menu-item {
+      &.active {
+        color: $white-primary;
+        font-weight: 700;
+        .pro-inner-item {
+          padding: 16px !important;
+          background: $blue-primary;
+        }
+      }
+      &:hover {
+        cursor: pointer;
+        .pro-inner-item {
+          padding: 16px !important;
+          background: $blue-primary;
+          font-weight: 700;
+          color: $white-primary;
+        }
+      }
+    }
+  }
+}

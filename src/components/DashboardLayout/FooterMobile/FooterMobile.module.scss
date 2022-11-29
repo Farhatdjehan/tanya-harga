@@ -1,0 +1,56 @@
+@import './../../../../styles/variables';
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 1rem;
+    background: #fff;
+    height: 74px;
+    box-shadow: $box-shadow;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+.menuWrapper {
+    width: 94px;
+    height: 58px;
+    text-align: center;
+    color: #9EC2DE;
+
+    .title {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 18px;
+        text-align: center;
+        display: inline-block;
+        padding-bottom: 4px;
+        border-bottom: 2px solid transparent;
+
+    }
+
+    .logoWrapper {
+        margin-bottom: 4px;
+
+        &.globe::before {
+            width: 24px;
+            height: 24px;
+            display: block;
+            margin: auto;
+            content: url('./../../../../public/assets/svg/globe-inactive.svg');
+        }
+    }
+
+    &.active {
+        color: $blue-primary;
+
+        .title {
+            border-bottom: 2px solid $blue-primary;
+        }
+
+        .globe::before {
+            content: url('./../../../../public/assets/svg/globe-blue.svg');
+        }
+    }
+}

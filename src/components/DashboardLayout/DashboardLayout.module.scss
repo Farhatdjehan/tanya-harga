@@ -1,0 +1,30 @@
+@import "./../../../styles/variables";
+$breakpoint-tablet: 768px;
+$breakpoint-lg: 992px;
+
+.pageWrapper {
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+
+    .contentWrapper {
+        display: flex;
+        flex-grow: 1;
+        height: 100%;
+        flex-direction: column;
+        position: relative;
+        overflow-y: auto;
+        background-color: $white-primary;
+
+        .dashboardContent {
+            height: 100vh;
+            padding-bottom: 74px;
+            padding: 0 24px;
+            max-width: 500px;
+            width: 100%;
+            margin: auto;
+            // border: 1px solid black;
+        }
+    }
+}

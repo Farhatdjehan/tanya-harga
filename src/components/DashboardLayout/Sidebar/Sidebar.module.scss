@@ -1,0 +1,9 @@
+@import './../../../../styles/variables';
+$breakpoint-tablet: 768px;
+
+.sidebar{
+    .logoWrapper{
+        text-align:center;
+        margin: 40px 0 1rem;
+    }
+}

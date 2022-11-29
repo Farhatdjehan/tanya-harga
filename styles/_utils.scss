@@ -1,0 +1,278 @@
+@import "variables.scss";
+@import "./mixins";
+
+/* BUTTONS */
+.btn {
+  background: $blue-primary;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: $white-primary;
+  width: max-content;
+  font-weight: 700;
+  border: 1px solid #0e73b9;
+  text-align: center;
+  padding: 0px 20px;
+  line-height: 40px;
+  font-size: 0.9rem;
+
+  @include desktopLarge() {
+    font-size: 1rem;
+    line-height: 70px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    transition: $transition;
+    opacity: $opacity;
+  }
+
+  // size
+  &.btn-sm {
+    font-size: 12px;
+    padding: 0.5rem 1rem;
+    line-height: 150%;
+  }
+
+  &.btn-md {
+    padding: 10px 20px;
+    line-height: 150%;
+  }
+
+  &.btn-lg {
+    line-height: 70px;
+    padding: 0 64px;
+  }
+
+  // type
+  &.outline {
+    color: #ff685d;
+    border: 1px solid #ff685d;
+    background: none;
+  }
+
+  &.outline-blue {
+    color: $blue-primary;
+    border: 1px solid $blue-primary;
+    background: none;
+  }
+
+  &.btn-white {
+    background-color: $white-primary;
+    color: $blue-primary;
+    border: none;
+  }
+
+  &.btn-blue {
+    color: $white-primary;
+    background-color: $blue-primary;
+  }
+
+  &.center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* TYPOGRAPHY */
+.heading {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 45px;
+  color: $black-primary;
+  margin-bottom: 1rem;
+
+  &-center {
+    text-align: center;
+  }
+
+  &.page-title {
+    text-align: center;
+    margin-top: 52px;
+    margin-bottom: 56px;
+  }
+
+  &.white {
+    color: $white-primary;
+  }
+}
+
+.subheading {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: $black-primary;
+  margin-bottom: 1rem;
+
+  &.white {
+    color: $white-primary;
+  }
+}
+
+/* DASHBOARD */
+.dashboard-container {
+  padding: 40px 1rem;
+
+  @media (min-width: 768px) {
+    padding: 0;
+    max-width: 992px;
+    margin: auto;
+  }
+
+  &-fluid {
+    padding: 40px 1rem;
+    margin-bottom: 52px;
+
+    @media (min-width: 992px) {
+      padding: 24px 0;
+      margin: auto;
+    }
+  }
+}
+
+.dashboard-card-container {
+  background: #ffffff;
+  box-shadow: $box-shadow;
+  border-radius: 8px;
+  padding: 40px 1rem;
+
+  @media (min-width: 768px) {
+    padding: 40px;
+    max-width: 992px;
+    margin: auto;
+  }
+
+  &-fluid {
+    background: #ffffff;
+    box-shadow: $box-shadow;
+    border-radius: 8px;
+    padding: 40px 1rem;
+
+    @media (min-width: 768px) {
+      padding: 40px;
+      margin: auto;
+    }
+  }
+}
+
+.dashboard-heading {
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 150%;
+  color: $black-primary;
+  margin-bottom: 1rem;
+}
+
+.dashboard-subheading {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 150%;
+  color: $black-primary;
+  font-family: "Work Sans";
+  margin-bottom: 1rem;
+}
+
+.dashboard-page-title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+/* FIELDS & FORM */
+.field-wrapper {
+  background: $white-primary;
+  border-radius: 0.5rem;
+  padding: 12px 1rem;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #c3c1c1;
+  font-family: "Work Sans";
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: $black-primary;
+  width: 100%;
+  max-width: unset;
+
+  @include desktopLarge() {
+    max-width: 472px;
+  }
+}
+
+input[type="checkbox"] {
+  margin: 0;
+  margin-right: 0.25rem;
+  height: 12px;
+  width: 12px;
+}
+
+textarea {
+  resize: none;
+}
+
+textarea::placeholder {
+  font-family: $font-family-secondary;
+}
+
+.form-title {
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: $black-primary;
+
+  &.mb {
+    margin-bottom: 1rem;
+  }
+}
+
+.form-description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: $grey-primary;
+  font-family: "Work Sans";
+}
+
+/* MARGINS */
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+/* PUBLIC PAGES */
+.page-wrapper {
+  width: 100%;
+  padding-top: 48px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+  min-height: calc(100vh - $header-height-mobile);
+
+  @include desktop() {
+    max-width: 1170px;
+    padding-bottom: 52px;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    margin: 0 auto;
+    min-height: calc(100vh - $header-height-desktop);
+  }
+}
+
+.blog-text {
+  font-family: $font-workSans;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 150%;
+  color: $black-secondary;
+
+  @include desktop() {
+    font-size: 18px;
+    color: $black-primary;
+  }
+}
