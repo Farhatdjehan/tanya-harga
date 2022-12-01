@@ -25,6 +25,7 @@
         font-size: 12px;
         line-height: 15px;
         color: rgba(63, 63, 63, 0.75);
+        text-transform: capitalize;
       }
     }
     .rightElement {
@@ -55,16 +56,28 @@
     font-size: 16px;
     line-height: 20px;
     color: rgba(63, 63, 63, 0.75);
-    button {
-      background: #00d73c;
+    .button {
       border-radius: 18.5px;
       margin-right: 8px;
       height: 42px;
-      padding: 4px 24px;
+      padding: 4px 20px;
       border: none;
       margin-bottom: 12px;
-      &:last-child {
-        margin-bottom: 0;
+      font-weight: 600;
+      &__tokopedia {
+        background: #00d73c;
+      }
+      &__shopee {
+        background: #ff7337;
+        color: #fff;
+      }
+      &__lazada {
+        background: #4570b7;
+        color: #fff;
+      }
+      &__bukalapak {
+        color: #fff;
+        background: #d61f50;
       }
     }
     .slide {

@@ -14,7 +14,7 @@ export default function Home() {
           {menuCategory.map((item: any, index: any) => {
             return (
               <Link
-                href={`/${slugify(item.title)}/id=${index + 1}`}
+                href={`/${slugify(item.title)}/${index + 1}`}
                 key={index}
                 passHref
               >

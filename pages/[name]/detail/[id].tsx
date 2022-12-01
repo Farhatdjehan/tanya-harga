@@ -4,38 +4,111 @@ import BackButton from "../../../src/components/BackButton";
 import DashboardLayout from "../../../src/components/DashboardLayout";
 import styles from "./../../../styles/pages/DetailPages.module.scss";
 import heart from "./../../../public/assets/png/heart.png";
+import { data_json } from "../../../src/components/common/data_json";
+import { useEffect, useState } from "react";
+import { slugify, unslugify } from "../../../src/helper";
+import Link from "next/link";
 export default function DetailProduct() {
+  const router = useRouter();
+  const [data, setData]: any = useState();
+  let urlData: any = router?.query?.name;
+
+  useEffect(() => {
+    let urlIdBarang: any = router?.query?.id_barang;
+    let urlIdCat: any = router?.query?.id_cat;
+    let convertIntIdBarang = parseInt(urlIdBarang);
+    let convertIntIdCat = parseInt(urlIdCat);
+    let tmp = data_json[convertIntIdCat - 1]?.item;
+    setData(tmp?.filter((e) => convertIntIdBarang === e.id));
+  }, [router]);
+
+  // let data = data_json.filter((e) =>)
   return (
     <DashboardLayout pageTitle="Detail Page">
       <div className={styles.wrapper}>
         <BackButton />
-        <div className={styles.image}></div>
-        <div className={styles.topWrapper}>
-          <div className={styles.leftElement}>
-            <div className={styles.title}>Sapu Lidi</div>
-            <div className={styles.categoryText}>Pembersih</div>
-          </div>
-          <div className={styles.rightElement}>
-            <button>
-              <Image src={heart} />
-            </button>
-          </div>
-        </div>
-        <div className={styles.separator}></div>
-        <div className={styles.infoDescription}>
-          <div className={styles.title}>Range Harga</div>
-          <div className={styles.info}>xxxxxxx</div>
-          <div className={styles.title}>Cari di marketplace</div>
-          <div className={styles.info}>
-            <button>Tokopedia</button>
-            <button>Tokopedia</button>
-            <button>Tokopedia</button>
-          </div>
-          <div className={styles.title}>Rekomendasi Lainnya</div>
-          <div className={styles.info}>
-            <div className={styles.slide}></div>
-          </div>
-        </div>
+        {data?.map((e: any, i: any) => {
+          return (
+            <div key={i}>
+              <div className={styles.image}></div>
+              <div className={styles.topWrapper}>
+                <div className={styles.leftElement}>
+                  <div className={styles.title}>{e.item}</div>
+                  <div className={styles.categoryText}>
+                    {unslugify(urlData)}
+                  </div>
+                </div>
+                <div className={styles.rightElement}>
+                  <button>
+                    <Image src={heart} />
+                  </button>
+                </div>
+              </div>
+              <div className={styles.separator}></div>
+              <div className={styles.infoDescription}>
+                <div className={styles.title}>Range Harga</div>
+                <div className={styles.info}>{e.harga}</div>
+                <div className={styles.title}>Cari di marketplace</div>
+                <div className={styles.info}>
+                  <Link
+                    href={`https://www.tokopedia.com/search?st=product&q=${slugify(
+                      e.item
+                    )}`}
+                    passHref
+                  >
+                    <a target="_blank">
+                      <button
+                        className={`${styles.button} ${styles.button__tokopedia}`}
+                      >
+                        Tokopedia
+                      </button>
+                    </a>
+                  </Link>
+                  <Link
+                    href={`https://www.lazada.co.id/catalog/?q=${e.item}&_keyori=ss&from=input`}
+                    passHref
+                  >
+                    <a target="_blank">
+                      <button
+                        className={`${styles.button} ${styles.button__lazada}`}
+                      >
+                        Lazada
+                      </button>
+                    </a>
+                  </Link>
+                  <Link
+                    href={`https://shopee.co.id/search?keyword=${e.item}`}
+                    passHref
+                  >
+                    <a target="_blank">
+                      <button
+                        className={`${styles.button} ${styles.button__shopee}`}
+                      >
+                        Shopee
+                      </button>
+                    </a>
+                  </Link>
+                  <Link
+                    href={`https://www.bukalapak.com/products?from=omnisearch&from_keyword_history=false&search%5Bkeywords%5D=${e.item}&search_source=omnisearch_keyword&source=navbar`}
+                    passHref
+                  >
+                    <a target="_blank">
+                      <button
+                        className={`${styles.button} ${styles.button__bukalapak}`}
+                      >
+                        Bukalapak
+                      </button>
+                    </a>
+                  </Link>
+                </div>
+                <div className={styles.title}>Rekomendasi Lainnya</div>
+                <div className={styles.info}>
+                  <div className={styles.slide}></div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </DashboardLayout>
   );

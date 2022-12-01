@@ -1,12 +1,25 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState } from "react";
+import { data_json } from "../../src/components/common/data_json";
 import DashboardLayout from "../../src/components/DashboardLayout";
+import { slugify } from "../../src/helper";
 import styles from "./../../styles/pages/Category.module.scss";
 
 export default function SearchCategory() {
   const router = useRouter();
+  const [data, setData]: any = useState();
   let urlData = router?.query?.name;
-  console.log(router);
+  let urlId: any = router?.query?.id;
+  let converInt = parseInt(urlId);
+
+  const handleChange = (e: any) => {
+    e.preventDefault();
+    const newData = { ...data };
+    newData[e.target.id] = e.target.value;
+    setData(newData);
+  };
+
   return (
     <DashboardLayout pageTitle="Category">
       <div className={styles.wrapper}>
@@ -15,26 +28,32 @@ export default function SearchCategory() {
             Harga
             <br /> Barang Apa?
           </div>
-          <input placeholder="Ketik disini!" />
+          <input
+            placeholder="Ketik disini!"
+            id="barang"
+            name="barang"
+            onChange={handleChange}
+          />
         </div>
         <div className={styles.container}>
           <div className={styles.randomPick}>Rekomendasi</div>
           <div className={styles.randomWrapper}>
-            <Link href={`/${urlData}/detail/tes`} passHref>
-              <div className={styles.randomOption}>Sapu Lidi</div>
-            </Link>
-            <Link href={`/${urlData}/detail/tes`} passHref>
-              <div className={styles.randomOption}>Kain Pel</div>
-            </Link>
-            <Link href={`/${urlData}/detail/tes`} passHref>
-              <div className={styles.randomOption}>Kemoceng</div>
-            </Link>
-            <Link href={`/${urlData}/detail/tes`} passHref>
-              <div className={styles.randomOption}>Tong Sampah</div>
-            </Link>
+            {data_json[converInt - 1]?.item.slice(0, 4).map((e: any, i: any) => {
+              return (
+                <Link
+                  key={i}
+                  href={`/${urlData}/detail/${slugify(
+                    e.item
+                  )}?id_cat=${converInt}&id_barang=${e.id}`}
+                  passHref
+                >
+                  <div className={styles.randomOption}>{e?.item}</div>
+                </Link>
+              );
+            })}
           </div>
           <div className={styles.btnWrapper}>
-            <Link href={`/${urlData}/detail/tes`} passHref>
+            <Link href={`/${urlData}/detail/${data?.barang}`} passHref>
               <button>Cari Barang</button>
             </Link>
             <Link href="/" passHref>
