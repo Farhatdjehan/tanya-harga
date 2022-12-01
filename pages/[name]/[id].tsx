@@ -1,17 +1,23 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { data_json } from "../../src/components/common/data_json";
 import DashboardLayout from "../../src/components/DashboardLayout";
-import { slugify } from "../../src/helper";
+import { shuffle, slugify } from "../../src/helper";
 import styles from "./../../styles/pages/Category.module.scss";
 
 export default function SearchCategory() {
   const router = useRouter();
   const [data, setData]: any = useState();
+  const [shuffleData, setShuffleData]: any = useState();
   let urlData = router?.query?.name;
   let urlId: any = router?.query?.id;
   let converInt = parseInt(urlId);
+
+  useEffect(() => {
+    let tmp = shuffle(data_json);
+    setShuffleData(tmp);
+  }, []);
 
   const handleChange = (e: any) => {
     e.preventDefault();
@@ -38,19 +44,22 @@ export default function SearchCategory() {
         <div className={styles.container}>
           <div className={styles.randomPick}>Rekomendasi</div>
           <div className={styles.randomWrapper}>
-            {data_json[converInt - 1]?.item.slice(0, 4).map((e: any, i: any) => {
-              return (
-                <Link
-                  key={i}
-                  href={`/${urlData}/detail/${slugify(
-                    e.item
-                  )}?id_cat=${converInt}&id_barang=${e.id}`}
-                  passHref
-                >
-                  <div className={styles.randomOption}>{e?.item}</div>
-                </Link>
-              );
-            })}
+            {shuffleData &&
+              shuffleData[converInt - 1]?.item
+                .slice(0, 4)
+                .map((e: any, i: any) => {
+                  return (
+                    <Link
+                      key={i}
+                      href={`/${urlData}/detail/${slugify(
+                        e.item
+                      )}?id_cat=${converInt}&id_barang=${e.id}`}
+                      passHref
+                    >
+                      <div className={styles.randomOption}>{e?.item}</div>
+                    </Link>
+                  );
+                })}
           </div>
           <div className={styles.btnWrapper}>
             <Link href={`/${urlData}/detail/${data?.barang}`} passHref>
