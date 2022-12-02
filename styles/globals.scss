@@ -41,6 +41,69 @@ h4 {
   margin-left: auto;
 }
 
+.wrapper-btn {
+  display: flex;
+  flex-direction: column;
+}
+
+.or-text {
+  text-align: center;
+  padding: 16px 0;
+  color: rgba(0, 0, 0, 0.471);
+  font-size: 14px;
+}
+
+.main-screen__button,
+#button-sound > button {
+  padding: 12px;
+  align-self: flex-start;
+  justify-content: center;
+  border: none !important;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  background-color: #ff9900;
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  border: none;
+  width: 100% !important;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  color: #fff;
+  font-weight: 600;
+  &.twitter {
+    background-color: #1d9bf0;
+  }
+  &.facebook {
+    background-color: #3b5998;
+  }
+  &.whatsapp {
+    background-color: #10c045;
+  }
+}
+
+.toast-copy {
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+}
+
+.ReactModal__Overlay {
+  z-index: 2;
+  background-color: rgb(65 64 64 / 75%) !important;
+}
+
+.sharelink {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 12px;
+  line-height: 16px;
+}
+
 //accordion
 .rc-collapse-item {
   width: 300px;

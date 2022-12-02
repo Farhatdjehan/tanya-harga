@@ -15,9 +15,11 @@ export default function SearchCategory() {
   let converInt = parseInt(urlId);
 
   useEffect(() => {
-    let tmp = shuffle(data_json);
-    setShuffleData(tmp);
-  }, []);
+    if (urlId) {
+      let tmp = shuffle(data_json[converInt - 1]?.item);
+      setShuffleData(tmp);
+    }
+  }, [urlId]);
 
   const handleChange = (e: any) => {
     e.preventDefault();
@@ -45,24 +47,25 @@ export default function SearchCategory() {
           <div className={styles.randomPick}>Rekomendasi</div>
           <div className={styles.randomWrapper}>
             {shuffleData &&
-              shuffleData[converInt - 1]?.item
-                .slice(0, 4)
-                .map((e: any, i: any) => {
-                  return (
-                    <Link
-                      key={i}
-                      href={`/${urlData}/detail/${slugify(
-                        e.item
-                      )}?id_cat=${converInt}&id_barang=${e.id}`}
-                      passHref
-                    >
-                      <div className={styles.randomOption}>{e?.item}</div>
-                    </Link>
-                  );
-                })}
+              shuffleData.slice(0, 4).map((e: any, i: any) => {
+                return (
+                  <Link
+                    key={i}
+                    href={`/${urlData}/detail/${slugify(
+                      e.item
+                    )}?id_cat=${converInt}&id_barang=${e.id}`}
+                    passHref
+                  >
+                    <div className={styles.randomOption}>{e?.item}</div>
+                  </Link>
+                );
+              })}
           </div>
           <div className={styles.btnWrapper}>
-            <Link href={`/${urlData}/detail/${data?.barang}`} passHref>
+            <Link
+              href={`/${urlData}/detail/${data?.barang}?id_cat=${converInt}`}
+              passHref
+            >
               <button>Cari Barang</button>
             </Link>
             <Link href="/" passHref>

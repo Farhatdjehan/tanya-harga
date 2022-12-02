@@ -11,16 +11,32 @@ import Link from "next/link";
 export default function DetailProduct() {
   const router = useRouter();
   const [data, setData]: any = useState();
+  const [idBarang, setIdBarang]: any = useState();
   let urlData: any = router?.query?.name;
+  let searchData: any = router?.query?.search;
 
   useEffect(() => {
     let urlIdBarang: any = router?.query?.id_barang;
+    setIdBarang(urlIdBarang);
     let urlIdCat: any = router?.query?.id_cat;
     let convertIntIdBarang = parseInt(urlIdBarang);
     let convertIntIdCat = parseInt(urlIdCat);
-    let tmp = data_json[convertIntIdCat - 1]?.item;
-    setData(tmp?.filter((e) => convertIntIdBarang === e.id));
+    let tmp;
+    if (urlIdBarang === undefined) {
+      tmp = data_json[convertIntIdCat - 1]?.item?.filter((e) =>
+        e.item.toLowerCase().includes(searchData?.toLowerCase())
+      );
+      setData(tmp);
+      console.log(tmp);
+    } else {
+      tmp = data_json[convertIntIdCat - 1]?.item;
+      setData(tmp?.filter((e) => convertIntIdBarang === e.id));
+    }
   }, [router]);
+
+  const handleSave = (e: any) => {
+    e.preventDefault();
+  };
 
   // let data = data_json.filter((e) =>)
   return (
@@ -39,7 +55,7 @@ export default function DetailProduct() {
                   </div>
                 </div>
                 <div className={styles.rightElement}>
-                  <button>
+                  <button onClick={handleSave}>
                     <Image src={heart} />
                   </button>
                 </div>
