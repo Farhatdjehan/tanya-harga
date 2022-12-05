@@ -21,7 +21,8 @@ export default function DetailProduct() {
 
   useEffect(() => {
     let getData = getCookie("dataBarang");
-    if (getData !== undefined) {
+    console.log(getData);
+    if (getData) {
       let tmpGetData = JSON.parse(getData);
       setBarang(tmpGetData);
     }
