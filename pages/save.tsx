@@ -33,6 +33,7 @@ export default function Save() {
           {listSaved?.map((item: any, index: any) => {
             return (
               <Link
+                key={index}
                 href={`/${slugify(item.kategori)}/detail/${slugify(
                   item.item
                 )}?id_cat=${item.id_kategori}&id_barang=${item.id}`}
@@ -50,7 +51,7 @@ export default function Save() {
           </button>
         </>
       ) : (
-        <div style={{textAlign: 'center'}}>Tidak Ada Barang Tersimpan</div>
+        <div style={{ textAlign: "center" }}>Tidak Ada Barang Tersimpan</div>
       )}
     </DashboardLayout>
   );

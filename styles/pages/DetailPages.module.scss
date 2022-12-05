@@ -57,7 +57,7 @@
     }
     .wrapSelect {
       display: flex;
-      flex-wrap: nowrap;
+      flex-flow: wrap;
     }
     .item {
       padding: 12px;
