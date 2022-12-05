@@ -83,13 +83,13 @@ export default function Sidebar(props: SidebarProps) {
           <Menu className={`menu`}>
             <MenuItem>
               Kategori Barang
-              <Link href="#">
+              <Link href="/">
                 <a></a>
               </Link>
             </MenuItem>
             <MenuItem>
               Barang Tersimpan
-              <Link href="#">
+              <Link href="/save">
                 <a></a>
               </Link>
             </MenuItem>

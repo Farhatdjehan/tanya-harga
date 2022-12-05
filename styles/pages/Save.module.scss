@@ -1,0 +1,19 @@
+.title {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 32px;
+  line-height: 56px;
+}
+.item {
+  padding: 20px;
+  border: 2px solid #c3c1c1;
+  margin-bottom: 12px;
+  font-weight: 700;
+  border-radius: 32px;
+  &:hover {
+    background-color: #ff9900;
+    color: #fff;
+    border: 2px solid #ff9900;
+    cursor: pointer;
+  }
+}
