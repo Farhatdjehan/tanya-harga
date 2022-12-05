@@ -2,6 +2,31 @@
   position: relative;
   margin-bottom: 32px;
   height: 100%;
+  .emptyCase {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    .notFound {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    button {
+      background: #ff9900;
+      border-radius: 18.5px;
+      padding: 24px;
+      border: none !important;
+      width: 100%;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 20px;
+      text-align: center;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+  }
   .containerResult {
     display: flex;
     flex-direction: column;

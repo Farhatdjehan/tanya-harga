@@ -82,6 +82,9 @@ export default function DetailProduct() {
     router.push(`/${urlData}/detail/${item?.item}?id_cat=${convertIntIdCat}`);
   };
 
+  const handleBack = () => {
+    router.back();
+  };
   // let data = data_json.filter((e) =>)
   return (
     <DashboardLayout pageTitle="Detail Page">
@@ -196,6 +199,12 @@ export default function DetailProduct() {
               );
             })}
           </>
+        )}
+        {data?.length === 0 && (
+          <div className={styles.emptyCase}>
+            <div className={styles.notFound}>Tidak Ada Barang yang Dicari</div>
+            <button onClick={handleBack}>Kembali</button>
+          </div>
         )}
       </div>
     </DashboardLayout>
