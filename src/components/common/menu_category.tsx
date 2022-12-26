@@ -30,7 +30,7 @@ export const menuCategory = [
     image: house_tool,
   },
   {
-    title: "Hardware",
+    title: "Komputer & Laptop",
     image: computer,
   },
   {
@@ -38,31 +38,31 @@ export const menuCategory = [
     image: car,
   },
   {
-    title: "Gaming",
+    title: "Gaming Kit",
     image: game,
   },
   {
-    title: "Kamera",
+    title: "Fotografer Kit",
     image: camera,
   },
   {
-    title: "Alat Musik",
+    title: "Gitar Akustik Kit",
     image: music,
   },
   {
-    title: "Videografi",
+    title: "Videografer Kit",
     image: video,
   },
   {
-    title: "Berenang",
+    title: "Diving Kit",
     image: swim,
   },
   {
-    title: "Alat Hiking",
+    title: "Hiking & Camp Kit",
     image: tent,
   },
   {
-    title: "Peralatan Surfing",
+    title: "Surfing Kit",
     image: wave,
   },
   {
@@ -70,11 +70,23 @@ export const menuCategory = [
     image: tree,
   },
   {
-    title: "Serba Serbi Kue",
+    title: "Vespa Matic Kit",
+    image: tree,
+  },
+  {
+    title: "Cooking Cake Kit",
     image: cake,
   },
   {
-    title: "Baby Care",
+    title: "Kelistrikan Rumah",
+    image: cake,
+  },
+  {
+    title: "Kado Menikah",
+    image: gift,
+  },
+  {
+    title: "Programmer Kit",
     image: baby,
   },
   {
@@ -82,13 +94,49 @@ export const menuCategory = [
     image: home,
   },
   {
-    title: "Inspirasi Kado",
+    title: "Baju Wanita",
+    image: gift,
+  },
+  {
+    title: "21+",
+    image: gift,
+  },
+  {
+    title: "Army Kit",
+    image: gift,
+  },
+  {
+    title: "Nikah - Cowo",
+    image: gift,
+  },
+  {
+    title: "Nikah - Cewe",
+    image: gift,
+  },
+  {
+    title: "Paket Pernikahan",
+    image: gift,
+  },
+  {
+    title: "Kado Untuk Pacar",
+    image: gift,
+  },
+  {
+    title: "Kado Anniv Pernikahan",
+    image: gift,
+  },
+  {
+    title: "Disayang Pacar",
+    image: gift,
+  },
+  {
+    title: "Alat Keamanan*",
+    image: gift,
+  },
+  {
+    title: "Rumah Tangga",
     image: gift,
   },
 ];
 
-export const listMenuCategory = [
-    {
-        
-    }
-]
+export const listMenuCategory = [{}];

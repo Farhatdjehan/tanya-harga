@@ -42,7 +42,7 @@ export default function DetailProduct() {
       setData(tmp);
     } else {
       tmp = data_json[convertIntIdCat - 1]?.item;
-      setData(tmp?.filter((e) => convertIntIdBarang === e.id));
+      setData(tmp?.filter((e) => convertIntIdBarang === e.no));
     }
   }, [router]);
 
@@ -85,7 +85,6 @@ export default function DetailProduct() {
   const handleBack = () => {
     router.back();
   };
-  // let data = data_json.filter((e) =>)
   return (
     <DashboardLayout pageTitle="Detail Page">
       <div className={styles.wrapper}>
@@ -136,7 +135,9 @@ export default function DetailProduct() {
                   <div className={styles.separator}></div>
                   <div className={styles.infoDescription}>
                     <div className={styles.title}>Range Harga</div>
-                    <div className={styles.info}>{e.harga}</div>
+                    <div className={styles.info}>
+                      {e.lowest_price} - {e.highest_price}
+                    </div>
                     <div className={styles.title}>Cari di marketplace</div>
                     <div className={styles.info}>
                       <Link

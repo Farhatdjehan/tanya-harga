@@ -9,12 +9,12 @@
   }
   .wrapperMenu {
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     flex: 3;
     flex-flow: wrap;
     .container {
+      margin: 0px 8.5px 28px;
       width: 92px;
-      margin-bottom: 28px;
       .menu {
         width: 95px;
         height: 95px;

@@ -32,10 +32,7 @@ export default function SearchCategory() {
     <DashboardLayout pageTitle="Category">
       <div className={styles.wrapper}>
         <div>
-          <div className={styles.title}>
-            Harga
-            <br /> Barang Apa?
-          </div>
+          <div className={styles.title}>Harga Apa?</div>
           <input
             placeholder="Ketik disini!"
             id="barang"
@@ -53,7 +50,7 @@ export default function SearchCategory() {
                     key={i}
                     href={`/${urlData}/detail/${slugify(
                       e.item
-                    )}?id_cat=${converInt}&id_barang=${e.id}`}
+                    )}?id_cat=${converInt}&id_barang=${e.no}`}
                     passHref
                   >
                     <div className={styles.randomOption}>{e?.item}</div>
