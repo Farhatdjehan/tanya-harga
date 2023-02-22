@@ -164,3 +164,22 @@
     }
   }
 }
+.wrapPopup {
+  width: 100%;
+  .popup {
+    position: fixed;
+    bottom: 40px;
+    margin: 0 auto;
+    text-align: center;
+    left: 0;
+    right: 0;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    background: rgba(0, 0, 0, 0.3803921569);
+    padding: 16px 24px;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 24px;
+  }
+}

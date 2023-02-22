@@ -13,6 +13,7 @@ export default function DetailProduct() {
   const [data, setData]: any = useState();
   const [idBarang, setIdBarang]: any = useState();
   const [barang, setBarang]: any = useState([]);
+  const [isWishlisted, setIsWishlisted]: any = useState(false);
   const [save, setSave]: any = useState(false);
   let urlData: any = router?.query?.name;
   let searchData: any = router?.query?.search;
@@ -21,7 +22,6 @@ export default function DetailProduct() {
 
   useEffect(() => {
     let getData = getCookie("dataBarang");
-    console.log(getData);
     if (getData) {
       let tmpGetData = JSON.parse(getData);
       setBarang(tmpGetData);
@@ -60,6 +60,15 @@ export default function DetailProduct() {
     }
   }, [save]);
 
+  useEffect(() => {
+    if (barang && data) {
+      let isAny = barang.filter((e: any) => e.no === data[0]?.no);
+      if (isAny?.length > 0) {
+        setIsWishlisted(true);
+      }
+    }
+  }, [barang, data]);
+
   const handleSave = (elmnt: any, value: any) => {
     elmnt.preventDefault();
     const newData = [...barang];
@@ -85,6 +94,7 @@ export default function DetailProduct() {
   const handleBack = () => {
     router.back();
   };
+
   return (
     <DashboardLayout pageTitle="Detail Page">
       <div className={styles.wrapper}>
@@ -116,6 +126,7 @@ export default function DetailProduct() {
           <>
             <BackButton />
             {data?.map((e: any, i: any) => {
+              console.log(e);
               return (
                 <div key={i}>
                   <div className={styles.image}></div>
@@ -127,7 +138,10 @@ export default function DetailProduct() {
                       </div>
                     </div>
                     <div className={styles.rightElement}>
-                      <button onClick={(elmnt) => handleSave(elmnt, e)}>
+                      <button
+                        disabled={isWishlisted ? true : false}
+                        onClick={(elmnt) => handleSave(elmnt, e)}
+                      >
                         <Image src={heart} />
                       </button>
                     </div>
@@ -208,6 +222,11 @@ export default function DetailProduct() {
           </div>
         )}
       </div>
+      {save && (
+        <div className={styles.wrapPopup}>
+          <div className={styles.popup}>Berhasil Masuk Wishlistmu!</div>
+        </div>
+      )}
     </DashboardLayout>
   );
 }

@@ -25,6 +25,18 @@ export default function Save() {
     router.reload();
   };
 
+  const handleDeleteSelected = (e: any, id: any) => {
+    e.preventDefault();
+    let tmp = getCookie("dataBarang");
+    if (tmp !== undefined) {
+      let parse = JSON.parse(tmp);
+      let newData = [...parse];
+      newData?.splice(id, 1);
+      setCookie("dataBarang", JSON.stringify(newData), 14);
+      router.reload();
+    }
+  };
+
   return (
     <DashboardLayout pageTitle="Barang Tersimpan">
       <div className={styles.title}>Barang Tersimpan</div>
@@ -36,18 +48,32 @@ export default function Save() {
                 key={index}
                 href={`/${slugify(item.kategori)}/detail/${slugify(
                   item.item
-                )}?id_cat=${item.id_kategori}&id_barang=${item.id}`}
+                )}?id_cat=${item.id_kategori}&id_barang=${item.no}`}
                 passHref
               >
                 <div key={index} className={styles.item}>
-                  <span style={{ marginRight: "16px" }}>{index + 1}.</span>
-                  {item.item}
+                  <div className={styles.wrapMain}>
+                    <span style={{ marginRight: "16px" }}>{index + 1}.</span>
+                    {item.item}
+                  </div>
+                  <div
+                    onClick={(e) => handleDeleteSelected(e, index)}
+                    style={{
+                      backgroundColor: "red",
+                      color: "#fff",
+                      padding: "8px 16px",
+                      fontSize: "12px",
+                      borderRadius: "30px",
+                    }}
+                  >
+                    Hapus
+                  </div>
                 </div>
               </Link>
             );
           })}
           <button className={styles.button} onClick={handleDelete}>
-            Hapus Barang
+            Hapus Semua Barang
           </button>
         </>
       ) : (

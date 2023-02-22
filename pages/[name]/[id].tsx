@@ -63,7 +63,9 @@ export default function SearchCategory() {
               href={`/${urlData}/detail/${data?.barang}?id_cat=${converInt}`}
               passHref
             >
-              <button>Cari Barang</button>
+              <button disabled={data?.barang === undefined ? true : false}>
+                Cari Barang
+              </button>
             </Link>
             <Link href="/" passHref>
               <button>Lihat Kategori Lagi</button>

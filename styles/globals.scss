@@ -85,7 +85,9 @@ h4 {
     background-color: #10c045;
   }
 }
-
+button:disabled {
+  opacity: 0.5;
+}
 .toast-copy {
   position: absolute;
   z-index: 3;
